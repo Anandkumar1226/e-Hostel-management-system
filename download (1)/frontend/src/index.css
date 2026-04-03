@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+  }
+
+  @keyframes face-scan {
+    0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
+  }
+
+  @keyframes scanner-line {
+    0% { top: 0; }
+    100% { top: 100%; }
+  }
+
+  @keyframes progress-bar {
+    0% { width: 0; }
+    100% { width: 100%; }
+  }
+
+  --animate-shake: shake 0.4s ease-in-out 0s 2;
+  --animate-face-scan: face-scan 2s ease-in-out infinite;
+  --animate-scanner-line: scanner-line 2s linear infinite;
+  --animate-progress-bar: progress-bar 3s linear forwards;
+}
+
+@layer base {
+  body {
+    @apply text-gray-900 antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer components {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-200 rounded-full hover:bg-gray-300 transition-colors;
+  }
+}
+
+/* Base styles for the app */
+:root {
+  background-color: #f9fafb;
+}
